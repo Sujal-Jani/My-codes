@@ -1,0 +1,46 @@
+#include<iostream>
+using namespace std;
+
+void insert(int arr[],int& n){
+  int a=n;
+  //cout<<n;
+  if(n==0){
+    return;
+  }
+  n--;
+  insert(arr,n);
+  n++;
+  
+  cout<<"arr["<<n-1<<"] : ";
+  cin>>arr[n-1];
+}
+
+bool sortedness(int arr[],int n){
+  if(n==1){
+    return true;
+  }
+  
+  if(arr[0]>arr[1]){
+    return false;
+  }
+  return sortedness(++arr,--n);
+}
+
+
+int main(){
+  int n;
+  cout<<"n : ";
+  cin>>n;
+  int *arr=new int[n];
+  
+  insert(arr,n);
+  int ans=sortedness(arr,n);
+  if(ans){
+    cout<<"Array is sorted"<<endl<<endl;
+    
+  }
+  else{
+    cout<<"Array is not sorted \n\n";
+  }
+  
+}
