@@ -1,0 +1,44 @@
+#include<iostream>
+using namespace std;
+
+int print_Fibonacci(int n){
+
+//Base Case
+
+  if(n==0){
+          return 0;
+  }
+  if(n==1){
+          return 1;
+  }
+
+  int f2=print_Fibonacci(n-2),f1=print_Fibonacci(n-1);
+  return f1+f2;
+  
+}
+
+void printtilln(int n){
+  
+  //Base case
+
+  if(n<0){
+    return ;
+  }
+
+  // Recursive relation
+  printtilln(--n);               //Post increment is not allowed
+  n++;
+  cout<<print_Fibonacci(n)<<" ";
+}
+
+int main(){
+  int n;
+  cout<<"n : ";
+  cin>>n;
+
+printtilln(n);
+  
+  /*for(int i=0;i<=n;i++){
+    cout<<print_Fibonacci(i)<<" ";
+  }*/
+}
