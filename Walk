@@ -1,0 +1,27 @@
+#include<iostream>
+using namespace std;
+
+void walk(int dest,int src){
+  
+  
+  cout<<src<<" ";
+  
+  //Base case
+  
+  if(src==dest){
+    cout<<endl<<"Pohoch gaya"<<endl;
+    return;
+  }
+  
+  //Recursive relation
+  
+  walk(dest,++src);
+  return;
+}
+
+int main(){
+  int dest,src=0;
+  cout<<"Destination : ";
+  cin>>dest;
+  walk(dest,src);
+}
