@@ -1,0 +1,27 @@
+#include<iostream>
+#include<vector>
+#include<string>
+using namespace std;
+
+void saydigit(int n,vector<int>& ans){
+  if(n==0){
+    return;
+  }
+  saydigit(n/10,ans);
+  ans.push_back(n%10);
+  
+
+ }
+
+int main(){
+  int n;
+  vector<int> digits;
+  string arr[10]={"zero","one","two","three","four","five","six","seven","eight","nine"};
+  cout<<"Enter a number here : ";
+  cin>>n;
+  saydigit(n,digits);
+  for(int i=0;i<digits.size();i++){
+    int a=digits[i];
+    cout<<arr[a]<<" ";
+  }
+}
