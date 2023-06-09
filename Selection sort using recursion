@@ -1,0 +1,28 @@
+#include<iostream>
+using namespace std;
+
+void selectionsort(int arr[],int i,int j){
+  if(i==j){
+    return;
+  }
+  int a=11100,x=i,n=0;
+  while(x<=j){
+    if(arr[x]<a){
+      a=arr[x];
+      n=x;
+    }
+    x++;
+  }
+  swap(arr[i],arr[n]);
+  i++;
+  selectionsort(arr,i,j);
+}
+
+int main(){
+  int arr[6]={5,1,2,9,6,0},i=0,j=5;
+  selectionsort(arr,i,j);
+  for(int i=0;i<=j;i++){
+    cout<<arr[i]<<" ";
+  }
+  cout<<"\n\n";
+}
