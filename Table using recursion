@@ -1,0 +1,29 @@
+#include<iostream>
+using namespace std;
+
+void table(int m,int n){
+  //base case
+  if(n==1){
+    cout<<m<<" X "<<n<<" = "<<m*n<<endl;
+    return;
+  }
+  
+  //recursive relation
+
+  table(m,n-1);
+  cout<<m<<" X "<<n<<" = "<<m*n<<endl;
+  //Processing
+
+  
+}
+
+int main(){
+  int m,n;
+  cout<<"m : ";
+  cin>>m;
+  cout<<"\nn : ";
+  cin>>n;
+  cout<<endl;
+  table(m,n);
+  cout<<endl<<endl;
+}
