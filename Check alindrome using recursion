@@ -1,0 +1,23 @@
+#include<iostream>
+using namespace std;
+
+void reversestri(string& str,int j,int i){
+  if(i>=j){
+    return;
+  }
+  swap(str[i],str[j]);
+ 
+  reversestri(str,--j,++i);
+}
+
+int main(){
+  string str0="sujallajus";
+  string reversestr=str0;
+  reversestri(reversestr,reversestr.length()-1,0);
+  if(str0==reversestr){
+    cout<<"Its a palindrome.\n\n";
+  }
+  else{
+    cout<<"Its not a palindrome.\n\n";
+  }
+}
