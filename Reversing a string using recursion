@@ -1,0 +1,17 @@
+#include<iostream>
+using namespace std;
+
+void reversestr(string& str,int j,int i){
+  if(i>=j){
+    return;
+  }
+  swap(str[i],str[j]);
+ 
+  reversestr(str,--j,++i);
+}
+
+int main(){
+  string str="babbar";
+  reversestr(str,str.length()-1,0);
+  cout<<str;
+}
