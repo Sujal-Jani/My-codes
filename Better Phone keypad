@@ -1,0 +1,43 @@
+#include<iostream>
+#include<deque>
+#include<string>
+#include<vector>
+using namespace std;
+
+void mobile(deque<int> num,int i,string s[],string& temp,int arr[]){
+  if(i>=num.size()){
+    return;
+  }
+  int j=num[i];       
+  string str=s[j];    
+  int k=arr[i];
+  char ch=str[k];
+  temp.push_back(ch);
+  mobile(num,i+1,s,temp,arr);
+}
+
+int main(){
+  int n,i=0;               
+  cin>>n;
+  deque<int> num;          
+  int m;                   
+       
+  string s[10]={" "," ","abc","def","ghi","jkl","mno","pqr","stuv","wxyz"};          
+  string temp;       
+  for(;;){            
+    m=n%10;
+    n=n/10;
+    num.push_front(m);
+    if(n==0){break;}
+  }
+  int* arr=new int[num.size()];
+  for(int i=0;i<num.size();i++){
+    cin>>arr[i];
+  }
+  mobile(num,i,s,temp,arr);
+  for(int i=0;i<temp.size();i++){
+    cout<<temp[i]<<" ";
+  }
+  delete []arr;
+    cout<<endl;
+}
