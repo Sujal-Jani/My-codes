@@ -1,0 +1,69 @@
+  #include<iostream>
+  using namespace std;
+  
+  void arrsort(int* arr,int s,int n){
+    
+    int* arr1=new int[((n-s)/2)+1];
+    int* arr2=new int[((n-s)+1)-(((n-s)/2)+1)];
+    
+    for(int i=0;i<(((n-s)/2)+1);i++){
+      arr1[i]=arr[s+i];
+    }
+    for(int j=0;j<(((n-s)+1)-(((n-s)/2)+1));j++){
+      arr2[j]=arr[((n-s)/2)+1+s+j];
+    }
+    int i=0,j=0,x=s;
+    while(i<(((n-s)/2)+1) && j<((n-s)+1)-(((n-s)/2)+1)){
+      if(arr1[i]>arr2[j])
+      {
+        arr[x]=arr2[j];
+        j++;
+      }
+      else if(arr1[i]<=arr2[j]){
+       arr[x]=arr1[i];
+       i++;
+    }
+      x++;
+    }
+    while(i<(((n-s)/2)+1)){
+      arr[x]=arr1[i];
+      i++;
+      x++;
+    }
+    while(j<(((n-s)+1)-(((n-s)/2)+1))){
+      arr[x]=arr2[j];
+      j++;
+      x++;
+    }
+    delete [] arr1;
+    delete []arr2;
+    }
+  
+  void mergesort(int arr[],int s,int n) {
+    
+    //base case
+    if(n-s==0){
+      return;
+    }
+  
+    //recursive function
+    mergesort(arr,s,s+((n-s)/2));
+    mergesort(arr,(s+((n-s)/2))+1,n);
+    arrsort(arr,s,n); 
+    
+  }
+  
+  
+  int main() {
+    char arrs[11];
+    for(int i=0;i<10;i++){
+      cin>>arrs[i];
+    }
+    int arr[10]={arrs[0]-'a',arrs[1]-'a',arrs[2]-'a',arrs[3]-'a',arrs[4]-'a',arrs[5]-'a',arrs[6]-'a',arrs[7]-'a',arrs[8]-'a',arrs[9]-'a'},n=9,s=0;
+    mergesort(arr,s,n);
+    for(int i=0;i<=n;i++){
+      char cho=arr[i]+'a';
+      cout<<cho<<"  ";
+    }
+    cout<<endl;
+  }
