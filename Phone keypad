@@ -1,0 +1,40 @@
+#include<iostream>
+#include<deque>
+#include<string>
+#include<vector>
+using namespace std;
+
+void mobile(deque<int> num,vector<string> &ans,int i,string s[],string temp){
+  if(i>=num.size()){
+    ans.push_back(temp);
+    return;
+  }
+  int j=num[i];
+  string str=s[j];
+  for(int x=0;x<str.size();x++){
+    temp.push_back(str[x]);
+    mobile(num,ans,i+1,s,temp);
+    temp.pop_back();
+  }
+}
+
+int main(){
+  int n,i=0;
+  cin>>n;
+  deque<int> num;
+  int m;
+  vector<string> ans;
+  string s[10]={" "," ","abc","def","ghi","jkl","mno","pqr","stuv","wxyz"};
+  string temp;
+  for(;;){
+    m=n%10;
+    n=n/10;
+    num.push_front(m);
+    if(n==0){break;}
+  }
+  mobile(num,ans,i,s,temp);
+  for(int i=0;i<ans.size();i++){
+    cout<<ans[i]<<" ";
+  }
+    cout<<endl;
+}
