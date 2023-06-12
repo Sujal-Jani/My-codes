@@ -6,27 +6,30 @@ using namespace std;
 
 void mobile(deque<int> num,vector<string> &ans,int i,string s[],string temp){
   if(i>=num.size()){
-    ans.push_back(temp);
+    ans.push_back(temp);        // stores different combinations of strings
     return;
   }
-  int j=num[i];
-  string str=s[j];
-  for(int x=0;x<str.size();x++){
+  int j=num[i];       // j represents a digit integer at given index of it
+  string str=s[j];    //str is the string which is been maped to digit contained in j
+  for(int x=0;x<str.size();x++){                    // this loop turn by turn selects character of the string one by one to make different combinations
     temp.push_back(str[x]);
-    mobile(num,ans,i+1,s,temp);
+    mobile(num,ans,i+1,s,temp);                    // recursion function jumps to next digits of number
     temp.pop_back();
   }
 }
 
 int main(){
-  int n,i=0;
+  int n,i=0;                // input number and index
   cin>>n;
-  deque<int> num;
-  int m;
-  vector<string> ans;
-  string s[10]={" "," ","abc","def","ghi","jkl","mno","pqr","stuv","wxyz"};
-  string temp;
-  for(;;){
+  deque<int> num;          // num in deque form is been taken to seperate digits of the input number
+  int m;                   //m is been taken to send one's place digit of n in num
+  vector<string> ans;      // ans is been made to store all the combinations 
+  string s[10]={" "," ","abc","def","ghi","jkl","mno","pqr","stuv","wxyz"};           // s is been made to map digits stored in num with string of keypad
+  string temp;       // temp is been made to store one combination at a time of a given number, which will eventually contain all the combinations and will give it to 
+                      //ans on by one
+ 
+  
+  for(;;){             //this for loop is been made to store digits of integer n in deque num
     m=n%10;
     n=n/10;
     num.push_front(m);
