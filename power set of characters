@@ -1,0 +1,39 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+
+void powerset(int arr[],int i,vector<vector<int>> &nop,vector<int> top){
+  
+  if(i>2){
+    nop.push_back(top);
+    return;
+  }
+  top.push_back(arr[i]);
+  powerset(arr,i+1,nop,top);
+  top.pop_back();
+  powerset(arr,i+1,nop,top);
+}
+
+int main(){
+  char c[4];
+  c[3]='\0';
+  cin>>c;
+  
+  int arr[3]={c[0]-'a',c[1]-'a',c[2]-'a'},i=0;
+  vector<int> top;
+  vector<vector<int>> nop;
+  powerset(arr,i,nop,top);
+  cout<<endl;
+  
+  for(int i=nop.size()-1;i>=0;i--){
+    if(nop[i].size()==0){
+      cout<<"Null Set";
+    }
+    for(int j=0;j<nop[i].size();j++){
+      char ch=nop[i][j]+'a';
+       cout<<ch<<" ";
+    }
+   cout<<endl<<endl;
+  }
+    cout<<endl<<endl;
+}
