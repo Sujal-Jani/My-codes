@@ -1,0 +1,26 @@
+#include<iostream>
+using namespace std;
+
+void permutations(string s,int i,int& count){
+  if(i>=s.size()){
+    cout<<s<<endl;
+    count++;
+    return;
+  }
+ int j=i;
+ while(j<s.size()){
+   swap(s[i],s[j]);
+   permutations(s,i+1,count);
+   j++;
+ }
+}
+
+int main(){
+  string s;
+  cin>>s;
+  int i=0,count=0;
+  cout<<endl;
+  permutations(s,i,count);
+  cout<<endl<<count<<endl;
+  cout<<endl;
+}
