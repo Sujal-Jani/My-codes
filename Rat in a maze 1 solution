@@ -1,0 +1,41 @@
+#include<iostream>
+using namespace std;
+
+void way(int arr[][4],int i,int j,int visit[][4]){
+  if(i==3 && j==3){
+    return;
+  }
+  //Down
+  if(i+1<4 && arr[i+1][j]==1 && visit[i+1][j]==0){
+    for(int k=j;k>=0;k--){
+    visit[i+1][k]=1;
+    }
+    cout<<"D ";
+    way(arr,i+1,j,visit);
+  }
+  //Left
+  else if(j-1>=0 && arr[i][j-1]==1 && visit[i][j-1]==0){
+    visit[i][j-1]=1;
+    cout<<"L ";
+    way(arr,i,j-1,visit);
+  }
+  //Right
+  else if(j+1<4 && arr[i][j+1]==1 && visit[i][j+1]==0){
+    
+    visit[i][j+1]=1;
+    
+    cout<<"R ";
+    way(arr,i,j+1,visit);
+  }
+  //Up
+   else if(i-1>=0 && arr[i-1][j]==1 && visit[i-1][j]==0){
+    visit[i-1][j]=1;
+    cout<<"U ";
+    way(arr,i-1,j,visit);
+  }
+}
+
+int main(){
+  int arr[4][4]={0,0,0,0,1,1,1,1,0,0,1,0,0,1,1,1},i=0,j=0,visit[4][4]={0};
+  way(arr,i,j,visit);
+}
