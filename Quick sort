@@ -1,0 +1,57 @@
+#include<iostream>
+using namespace std;
+
+int partition(int arr[],int s,int n){  
+  int count=0;
+  for(int i=s+1;i<=n;i++){
+    if(arr[i]<arr[s]){
+      count++;
+    }
+  }
+   swap(arr[count+s],arr[s]);
+  int i=s,j=n;
+  while(i<count+s && j>count+s){
+    if(arr[s+count]>arr[j] && arr[s+count]<arr[i]){
+      swap(arr[i],arr[j]);
+      i++;
+      j--;
+    }
+    else if(arr[s+count]>arr[j]){
+      i++;
+    }
+    else if(arr[s+count]<arr[i]){
+      j--;
+    }
+    else{
+      i++;
+      j--;
+    }
+  }      
+ 
+  return s+count;
+}
+
+void quicksort(int arr[],int s,int n){
+  
+  if(s>=n){
+    return;
+  }
+  
+  int p=partition(arr,s,n);
+  //Recursion
+  
+  quicksort(arr,s,p-1);
+  quicksort(arr,p+1,n);
+  s++;
+}
+int main(){
+
+  int arr[100]={98, 35, 71, 10, 55, 26, 86, 42, 77, 13, 59, 93, 28, 75, 68, 52, 39, 17, 81, 7, 64, 31, 89, 2, 47, 80, 22, 90, 61, 97, 45, 4, 56, 16, 73, 20, 84, 51, 11, 96, 23, 65, 36, 69, 32, 79, 15, 67, 43, 9, 57, 37, 87, 19, 91, 50, 33, 85, 6, 82, 14, 70, 48, 76, 38, 3, 74, 40, 54, 8, 66, 30, 78, 12, 99, 21, 88, 58, 44, 94, 27, 72, 1, 46, 83, 18, 95, 29, 63, 5, 92, 24, 62, 34, 60, 25, 53, 49, 100},s=0,n=99;
+  
+  quicksort(arr,s,n);
+  
+  for(int i=0;i<=n;i++){
+    cout<<arr[i]<<" ";
+  }
+ cout<<endl<<endl;
+}
